@@ -1,16 +1,22 @@
-## 第一堂作业：实现jsx解析器与渲染器
-- 先认真阅读doc目录下面的教材
-- 安装依赖运行npm start。
-- 调试playground.js，看看jsx编译后的结果是什么。
-- 实现一个数据结构，把jsx编译后的结构以嵌套形式保存在数据结构对象中（参考react渲染）。
-- 实现render，解析这个嵌套对象，并且把解析结果渲染到页面上。
-- 渲染可以调用dom.js里createElement函数。
+## 运行结果
+-调试playground.js,jsx编译后的结果是 createElement("div",null,user.name)
+-dom.js中的each方法是不是有点错误 keys 是否应该改成Object.keys
 
-有能力的同学可以自己实现事件，更新等内容。
+##笔记
+-renderComponent(component,container)
+-- 1.将component实例渲染到给定的container中，
+-- 2.在渲染过程中 会先判断当前的 container中是否存在一个与之对应、已经渲染过的component,若存在则更新preComponent; 若没有
+   则将 container与组件建立关联映射，同时调用mountComponentIntoNode 将component挂载到container上
 
-## 提交方式
-- 每位同学需要自己建一个git仓库，可以选择github或者码云。
-- 每次作业写完后把代码提交到自己的github仓库里，并在README里写入自己的学习文章笔记，以增强学习效果，防止忘记 。
-- 然后把文章的链接提交到此<a href="https://www.wenjuan.com/s/FF3yQr">地址</a>，我看到后会把你拉入第二次课的微信群并发放第二次课程的资料，每周二一次课，如果过了截止日期将不再接受申请。
-- 本次课的开始时间为2018年7月17日23:59:59，截止时间为2018年7月30日23:59:59
-- 本次课程不收取任何费用
+--组件创建流程
+--1.消费者配置回调声明
+--2.编译阶段 【native组件；composite组件】
+--3.组件的创建 【createClass】[需要再详细的看下这个方法]
+--4.组件实例化
+
+--组件渲染流程
+--1.ReactComponent.mountComponentIntoNode
+--2.ReactComponent._mountComponentIntoNode
+--3.ReactCompositeComponent.mountComponent
+组件渲染过程的代码需要再看下没有特别理解到。
+
